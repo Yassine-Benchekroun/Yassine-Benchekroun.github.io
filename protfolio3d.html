@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMDA BENCHEKROUN Yassine | AI Engineering Portfolio</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="protfolio3d.css">
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+
+    <!-- Live Users Badge (Top Left) -->
+    <div class="live-users-badge">
+        <span class="live-icon-wrapper">
+            <span class="live-indicator"></span>
+        </span>
+        <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span><span id="user-count">...</span> <span data-i18n="footer_online">Online</span></span>
+    </div>
+
+    <!-- Timezone & Clock -->
+    <div class="timezone-badge">
+        <span class="location-label">📍 Morocco</span>
+        <span class="time-separator">|</span>
+        <span id="live-clock">--:--:--</span>
+    </div>
+
+    <!-- Language Toggle -->
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+        <span class="lang-text">FR</span>
+    </button>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <span class="theme-icon sun-icon">☀️</span>
+        <span class="theme-icon moon-icon">🌙</span>
+    </button>
+
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to Top">
+        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <div class="content">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#studies" data-i18n="nav_education">Studies</a></li>
+                <li><a href="#certificates" data-i18n="nav_certifications">Certificates</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="home">
+            <div class="section-content hero-section">
+                <div class="hero-main">
+                    <h1 data-i18n="hero_title">Artificial Intelligence Engineer to be</h1>
+                    <p class="hero-subtitle" data-i18n="hero_desc">Passionate about Full-Stack development and
+                        integrating Machine Learning into scalable web applications. Dedicated to building intelligent
+                        systems that transform complex data into seamless user experiences.</p>
+
+                    <div class="hero-quick-stats">
+                        <div class="stat">
+                            <span class="stat-label">📍 <span data-i18n="stat_location_label">Location</span></span>
+                            <span class="stat-value" data-i18n="stat_location_value">Fez, Morocco</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">🟢 <span data-i18n="stat_status_label">Status</span></span>
+                            <span class="stat-value" data-i18n="stat_status_value">Open to Internships</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">💡 <span data-i18n="stat_focus_label">Focus</span></span>
+                            <span class="stat-value" data-i18n="stat_focus_value">AI & Full-Stack</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="#projects" class="cta-button" data-i18n="hero_btn_work">View My Work</a>
+                        <a href="#contact" class="cta-button secondary" data-i18n="hero_btn_contact">Get In Touch</a>
+                    </div>
+                </div>
+
+                <div class="recruiter-card">
+                    <h3 data-i18n="recruiter_title">⚡ Quick Info</h3>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_name_label">Name</span>
+                        <span class="recruiter-value">HAMDA BENCHEKROUN Yassine</span>
+                    </div>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_uni_label">University</span>
+                        <span class="recruiter-value" data-i18n="recruiter_uni_value">UEMF (FES, Morocco)</span>
+                    </div>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_prog_label">Program</span>
+                        <span class="recruiter-value" data-i18n="recruiter_prog_value">AI & CS Engineering</span>
+                    </div>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_year_label">Year</span>
+                        <span class="recruiter-value" data-i18n="recruiter_year_value">1st year in AI</span>
+                    </div>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_langs_label">Languages</span>
+                        <span class="recruiter-value" data-i18n="recruiter_langs_value">Arabic, English, French,
+                            Spanish</span>
+                    </div>
+                    <div class="recruiter-info-item">
+                        <span class="recruiter-label" data-i18n="recruiter_avail_label">Availability</span>
+                        <span class="recruiter-value" data-i18n="recruiter_avail_value">July 2026</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="about">
+            <div class="section-content">
+                <div class="section-tag" data-i18n="section_about">About Me</div>
+                <h2 data-i18n="about_header">My Journey</h2>
+                <p class="section-subheader" data-i18n="about_subheader"
+                    style="color: var(--text-muted); margin-top: -20px; margin-bottom: 30px;"></p>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="images/profile.jpeg" alt="Profile Picture">
+                    </div>
+                    <div class="about-text">
+                        <p data-i18n="about_p1">As a 1st-year AI Engineering student at UEMF, I specialize in building
+                            end-to-end applications using Python, Java, and C++, combining a strong foundation in
+                            Machine
+                            Learning with modern Full-Stack development.</p>
+                        <p data-i18n="about_p2">Driven by interests in cybersecurity, robotics, and strategy games, I
+                            combine technical curiosity with a strong mathematical foundation to solve complex problems.
+                        </p>
+                        <p data-i18n="about_p3">Highly autonomous and analytical, I bring adaptability and rigor to
+                            collaborative projects, focusing on turning theoretical concepts into practical
+                            applications.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-stats-container">
+                    <div class="about-stat-card">
+                        <h4 data-i18n="stat_exp_num">4+</h4>
+                        <p data-i18n="stat_exp_label">Years Coding</p>
+                    </div>
+                    <div class="about-stat-card">
+                        <h4 data-i18n="stat_proj_num">5+</h4>
+                        <p data-i18n="stat_proj_label">Projects Built</p>
+                    </div>
+                    <div class="about-stat-card">
+                        <h4 data-i18n="stat_happy_num">5</h4>
+                        <p data-i18n="stat_happy_label">Certifications</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <section id="studies">
+        <div class="section-content">
+            <div class="section-tag" data-i18n="section_education">Academic</div>
+            <h2 data-i18n="education_header">Education</h2>
+            <p class="section-subheader" data-i18n="education_subheader"
+                style="color: #aaa; margin-top: -20px; margin-bottom: 20px;"></p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">Sep 2025 – Present</span>
+                    <h3 data-i18n="edu_master_degree">Master's Degree in Engineering, AI</h3>
+                    <h4 data-i18n="edu_master_uni">Euro-Mediterranean University of FES (UEMF)</h4>
+                    <p data-i18n="edu_master_desc">Specializing in Advanced Machine Learning, Deep Learning, and
+                        Intelligent Systems.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">Sep 2023 – Jun 2025</span>
+                    <h3 data-i18n="edu_prep_degree">Integrated Preparatory Classes</h3>
+                    <h4 data-i18n="edu_prep_uni">Euro-Mediterranean University of FES (UEMF)</h4>
+                    <p data-i18n="edu_prep_desc">Intensive foundation in Mathematics, Physics, and Computer Science
+                        preparing for the engineering cycle.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">Sep 2022 – Jul 2023</span>
+                    <h3 data-i18n="edu_bac_degree">Baccalaureate in Mathematical Sciences</h3>
+                    <h4 data-i18n="edu_bac_uni">High School</h4>
+                    <p data-i18n="edu_bac_desc">Acquisition of solid theoretical foundations in Mathematics and
+                        Engineering Sciences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="section-content">
+            <div class="section-tag" data-i18n="section_certs">Learning</div>
+            <h2 data-i18n="certs_header">Certifications</h2>
+            <p class="section-subheader" data-i18n="certs_subheader"
+                style="color: #aaa; margin-top: -20px; margin-bottom: 20px;"></p>
+            <div class="horizontal-timeline" id="cert-timeline">
+                <div class="cert-item" data-cert="github-foundations">
+                    <span class="cert-date">Nov 2024</span>
+                    <h3>GitHub Foundations</h3>
+                    <p>Digi Club</p>
+                </div>
+                <div class="cert-item" data-cert="ethical-hacking">
+                    <span class="cert-date">Feb 2025</span>
+                    <h3>Ethical Hacking</h3>
+                    <p>SparkSec Club</p>
+                </div>
+                <div class="cert-item" data-cert="prompt-engineering">
+                    <span class="cert-date">Nov 2024</span>
+                    <h3>Prompt Engineering</h3>
+                    <p>IAMAI</p>
+                </div>
+                <div class="cert-item" data-cert="python-ds">
+                    <span class="cert-date">Jun 2022</span>
+                    <h3>Python for Data Structures</h3>
+                    <p>SoloLearn</p>
+                </div>
+                <div class="cert-item" data-cert="python-beginners">
+                    <span class="cert-date">Feb 2022</span>
+                    <h3>Python for Beginners</h3>
+                    <p>SoloLearn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content project-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body project-modal-body two-column">
+                <!-- Left Side: Gallery -->
+                <div class="modal-gallery-side">
+                    <div class="modal-main-image">
+                        <img id="project-modal-img" src="" alt="Project Preview">
+                        <video id="project-modal-video" controls style="display: none;"></video>
+                    </div>
+                    <div id="project-modal-grid" class="screenshot-grid"></div>
+                    <div id="project-modal-github" class="project-modal-github"></div>
+                </div>
+                <!-- Right Side: Info -->
+                <div class="modal-info-side">
+                    <h2 id="project-modal-title"></h2>
+                    <div id="project-modal-desc"></div>
+                    <div id="project-modal-tags" class="project-tags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certification Modal -->
+    <div id="cert-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="" alt="Certification">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <h4 id="modal-subtitle"></h4>
+                    <p id="modal-desc"></p>
+                    <ul id="modal-learnings"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="projects">
+        <div class="section-content">
+            <div class="section-tag" data-i18n="section_portfolio">Portfolio</div>
+            <h2 data-i18n="projects_header">Key Projects</h2>
+            <p class="section-subheader" data-i18n="projects_subheader"
+                style="color: #aaa; margin-top: -20px; margin-bottom: 20px;"></p>
+            <div class="grid">
+                <div class="project-card" data-project="sudoku"
+                    style="background-image: url('images/Projects-Screenshot/sudoku/main_page.png')">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-content">
+                        <h3 data-i18n="proj_sudoku_title">Sudoku Game </h3>
+                        <p data-i18n="proj_sudoku_desc">This Sudoku game is a desktop application designed with a strong
+                            focus on core game logic, usability, and extensible architecture. It supports multiple
+                            difficulty levels with an adaptive hint system and visual assistance features to guide
+                            gameplay without reducing challenge. The game includes advanced interaction mechanisms such
+                            as pencil mode, undo/redo, and full progress persistence through a save/load system,
+                            allowing players to resume sessions at any time. A custom puzzle generator ensures unique,
+                            valid boards for each playthrough. Additional features such as bilingual support, dark/light
+                            themes, and audio feedback contribute to a polished user experience. The architecture is
+                            built to accommodate future extensions, with a coin-based progression system and settings
+                            panel currently planned for final integration.</p>
+
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="matrix"
+                    style="background-image: url('images/Projects-Screenshot/Matrix_gui/main_page.png')">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-content">
+                        <h3 data-i18n="proj_2_title">Linear Algebra Matrix Library</h3>
+                        <p data-i18n="proj_2_desc">Implemented a mathematical library manually without using NumPy.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="ml"
+                    style="background-image: url('images/Projects-Screenshot/ml_comparaison/main_page.png')">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-content">
+                        <h3 data-i18n="proj_3_title">Classification Models Analysis</h3>
+                        <p data-i18n="proj_3_desc">Performance comparison of various ML models using clinical datasets.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="parking"
+                    style="background-image: url('images/Projects-Screenshot/parking/main_page.png')">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-content">
+                        <h3 data-i18n="proj_4_title">Smart Parking System</h3>
+                        <p data-i18n="proj_4_desc">An Arduino-based parking management system using dual IR sensors for
+                            accurate vehicle detection, servo-controlled barrier, and LCD display for real-time slot
+                            tracking.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="evil_twin"
+                    style="background-image: url('images/Projects-Screenshot/evil_twin/main_page.png')">
+                    <div class="project-card-overlay"></div>
+                    <div class="project-card-content">
+                        <h3 data-i18n="proj_5_title">Evil Twin Attack Demo</h3>
+                        <p data-i18n="proj_5_desc">A cybersecurity demonstration of Man-in-the-Middle attacks using
+                            rogue WiFi access points to intercept network traffic and analyze security vulnerabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-content">
+            <div class="section-tag" data-i18n="section_expertise">Expertise</div>
+            <h2 data-i18n="skills_header">Skills & Technologies</h2>
+            <p class="section-subheader" data-i18n="skills_subheader"
+                style="color: #aaa; margin-top: -20px; margin-bottom: 20px;"></p>
+            <div class="skills-wrapper">
+                <div class="skill-category">
+                    <h3 data-i18n="cat_programming">💻 Programming Languages</h3>
+                    <div class="skill-progress-item"><span>Java</span><span>85%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Python</span><span>90%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>C/C++</span><span>80%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>SQL & PL/SQL</span><span>82%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>R & MATLAB</span><span>75%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-i18n="cat_ai">🤖 AI & Machine Learning</h3>
+                    <div class="skill-progress-item"><span>Scikit-Learn</span><span>88%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Pandas & NumPy</span><span>85%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>ML Algorithms</span><span>82%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-i18n="cat_cybersecurity">🔒 Cybersecurity</h3>
+                    <div class="skill-progress-item"><span>Network Security</span><span>40%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Kali Linux</span><span>70%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Ethical Hacking</span><span>50%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Wireshark</span><span>80%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-i18n="cat_software">⚙️ Software Engineering</h3>
+                    <div class="skill-progress-item"><span>UML Design</span><span>85%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Data Structures</span><span>88%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Game Dev (SFML)</span><span>75%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-i18n="cat_tools">🔧 Tools & Management</h3>
+                    <div class="skill-progress-item"><span>Git/GitHub</span><span>90%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>VS Code</span><span>95%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Code::Blocks</span><span>88%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>ProjectLibre</span><span>75%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span>Enterprise Architect</span><span>78%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-i18n="cat_soft_skills">🧠 Soft Skills</h3>
+                    <div class="skill-progress-item"><span data-i18n="skill_time">Time Management</span><span>90%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span data-i18n="skill_adapt">Adaptability</span><span>95%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span data-i18n="skill_lead">Leadership</span><span>85%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span data-i18n="skill_team">Teamwork</span><span>90%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item"><span data-i18n="skill_problem">Problem
+                            Solving</span><span>95%</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-content">
+            <div class="section-tag" data-i18n="section_contact">Get In Touch</div>
+            <h2 data-i18n="contact_header">Let's Connect</h2>
+            <p style="color: #ccc; margin-bottom: 30px;" data-i18n="contact_internship"></p>
+
+            <div class="cv-downloads" style="margin-bottom: 40px;">
+                <button onclick="window.downloadCV('en')" class="cta-button mini">
+                    📄 <span data-i18n="cv_en">Download CV (EN)</span>
+                </button>
+                <button onclick="window.downloadCV('fr')" class="cta-button mini secondary">
+                    📄 <span data-i18n="cv_fr">Download CV (FR)</span>
+                </button>
+            </div>
+
+            <div class="contact-grid">
+                <a href="mailto:yassine.hamdabenchekroun@eidia.ueuromed.org" class="contact-card">
+                    <h4 data-i18n="contact_email">Email</h4>
+                    <p>yassine.hamdabenchekroun@eidia.ueuromed.org</p>
+                </a>
+                <a href="https://www.linkedin.com/in/yassine-hamda-benchekroun-432b55298/" class="contact-card"
+                    target="_blank" rel="noopener noreferrer">
+                    <h4>LinkedIn</h4>
+                    <p>yassine-hamda-benchekroun</p>
+                </a>
+                <a href="https://github.com/Yassine-Benchekroun" class="contact-card" target="_blank"
+                    rel="noopener noreferrer">
+                    <h4>GitHub</h4>
+                    <p>Yassine-Benchekroun</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <button class="lightbox-nav prev" id="lightbox-prev">&#10094;</button>
+            <div class="lightbox-image-container">
+                <img id="lightbox-img" src="" alt="Full Screen Preview">
+            </div>
+            <button class="lightbox-nav next" id="lightbox-next">&#10095;</button>
+        </div>
+        <div class="lightbox-controls">
+        </div>
+    </div>
+
+    <script src="protfolio3d.js"></script>
+</body>
+
+</html>
