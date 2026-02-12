@@ -226,7 +226,7 @@ const translations = {
 
         section_contact: "Get In Touch",
         contact_header: "Let's Connect",
-        contact_internship: "First-year AI Engineering student seeking a one-month observational internship starting July 2026, oriented toward Full-Stack development of data-driven applications. I have experience building software systems that manage data, perform data cleaning, and integrate machine learning models (classification and regression) to support analysis and decision-making in practical use cases.",
+        contact_internship: "Seeking a one-month observational internship starting July 2026. I am a first-year AI Engineering student at UEMF with a solid foundation in Machine Learning and proficiency in Python, Java, and C++. I am particularly interested in developing end-to-end applications, managing and analyzing data, and integrating intelligent models into practical, real-world solutions.",
         cv_en: "Download CV (EN)",
         cv_fr: "Download CV (FR)",
         contact_email: "Email",
@@ -334,7 +334,7 @@ const translations = {
 
         section_contact: "Contact",
         contact_header: "Connectons-nous",
-        contact_internship: "Étudiant en première année d'ingénierie en IA, je recherche un stage d'observation d'un mois à partir de juillet 2026, orienté vers le développement Full-Stack d'applications basées sur les données. J'ai de l'expérience dans la création de systèmes bureautiques et web impliquant la gestion et le nettoyage de données, ainsi que l'intégration de modèles d'apprentissage automatique (classification et régression) pour soutenir la prise de décision dans des applications réelles.",
+        contact_internship: "Je recherche un stage d’observation d’un mois à partir de juillet 2026. Je suis étudiant en première année du cycle d’ingénieur en IA à l’UEMF, avec une solide formation en apprentissage automatique et une maîtrise de Python, Java et C++. Je m’intéresse particulièrement au développement d’applications de bout en bout, à la gestion et à l’analyse de données, ainsi qu’à l’intégration de modèles intelligents dans des solutions concrètes et pratiques.",
         cv_en: "Télécharger CV (EN)",
         cv_fr: "Télécharger CV (FR)",
         contact_email: "E-mail",
@@ -488,7 +488,6 @@ const projectsData = {
         title: { en: 'Sudoku Game', fr: 'Jeu de Sudoku' },
         desc: {
             en: `
-                <p><strong>⚠️ Code private — commercial release upcoming.</strong></p>
                 <h3>Description</h3>
                 <p>A desktop Sudoku application built with a focus on robust game logic, intuitive user experience, and scalable architecture. Designed to deliver a polished, feature-rich puzzle experience with room for future enhancements.</p>
                 
@@ -511,7 +510,6 @@ const projectsData = {
                 </ul>
             `,
             fr: `
-                <p><strong>⚠️ Code privé — sortie commerciale prochaine.</strong></p>
                 <h3>Description</h3>
                 <p>Une application Sudoku de bureau conçue avec un accent sur une logique de jeu robuste, une expérience utilisateur intuitive et une architecture évolutive. Conçue pour offrir une expérience de puzzle soignée et riche en fonctionnalités avec de la place pour de futures améliorations.</p>
                 

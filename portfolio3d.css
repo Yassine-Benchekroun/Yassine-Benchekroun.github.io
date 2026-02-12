@@ -266,6 +266,10 @@ nav.scrolled {
     opacity: 1;
 }
 
+[data-theme="light"] [data-i18n="contact_internship"] {
+    color: #000 !important;
+}
+
 /* --- Sections --- */
 section {
     min-height: 100vh;
