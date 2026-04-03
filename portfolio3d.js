@@ -157,8 +157,6 @@ const translations = {
         stat_location_value: "Fez, Morocco",
         stat_status_label: "Status",
         stat_status_value: "Open to Internships",
-        stat_focus_label: "Focus",
-        stat_focus_value: "AI & Full-Stack",
 
         section_about: "About Me",
         about_header: "My Journey",
@@ -204,6 +202,8 @@ const translations = {
         proj_4_desc: "An Arduino-based parking management system with IR sensors and LCD display.",
         proj_5_title: "Evil Twin Attack Demo",
         proj_5_desc: "A cybersecurity demonstration of Man-in-the-Middle attacks using rogue WiFi access points.",
+        proj_6_title: "Custom E-commerce Cart System",
+        proj_6_desc: "Highly responsive native HTML/JS frontend utilizing a client-side database through localStorage API.",
 
         section_expertise: "Expertise",
         skills_header: "Skills",
@@ -226,7 +226,7 @@ const translations = {
 
         section_contact: "Get In Touch",
         contact_header: "Let's Connect",
-        contact_internship: "Seeking a one-month internship starting July 2026. I am a first-year AI Engineering student at UEMF with a solid foundation in Machine Learning and proficiency in Python, Java, and C++. I am particularly interested in developing end-to-end applications, managing and analyzing data, and integrating intelligent models into practical, real-world solutions.",
+        contact_internship: "Seeking a one-month internship starting July 2026. I am a third-year AI Engineering student at UEMF with a solid foundation in Machine Learning and proficiency in Python, Java, and C++. I am particularly interested in developing end-to-end applications, managing and analyzing data, and integrating intelligent models into practical, real-world solutions.",
         cv_en: "Download CV (EN)",
         cv_fr: "Download CV (FR)",
         contact_email: "Email",
@@ -265,8 +265,6 @@ const translations = {
         stat_location_value: "Fès, Maroc",
         stat_status_label: "Statut",
         stat_status_value: "Ouvert aux Stages",
-        stat_focus_label: "Focus",
-        stat_focus_value: "IA & Full-Stack",
 
         section_about: "À Propos",
         about_header: "Mon Parcours",
@@ -312,6 +310,8 @@ const translations = {
         proj_4_desc: "Un système de gestion de parking basé sur Arduino avec capteurs IR et écran LCD.",
         proj_5_title: "Démo Attaque Evil Twin",
         proj_5_desc: "Une démonstration de cybersécurité des attaques Man-in-the-Middle utilisant des points d'accès WiFi malveillants.",
+        proj_6_title: "Système E-commerce Personnalisé",
+        proj_6_desc: "Interface HTML/JS très réactive utilisant une base de données côté client via l'API localStorage.",
 
         section_expertise: "Expertise",
         skills_header: "Compétences",
@@ -763,6 +763,48 @@ const projectsData = {
         screenshots: [
             'images/Projects-Screenshot/evil_twin/history.jpeg',
             'images/Projects-Screenshot/evil_twin/evidence.png'
+        ]
+    },
+    'ecommerce': {
+        title: { en: 'Custom E-commerce Storefront Cart System', fr: 'Système E-commerce Personnalisé' },
+        desc: {
+            en: `
+                <h3>Description</h3>
+                <p>This e-commerce application delivers a highly responsive and scalable frontend experience built entirely with HTML, CSS, and JavaScript. To manage data without a backend server, the project utilizes a local mock API powered by JavaScript and the browser's localStorage. This client-side database seamlessly stores and feeds information to the intuitive product grid and detailed product pages, which are further enhanced by interactive image galleries featuring custom zoom functionality.</p>
+                <p>At the core of the application is a robust, dynamic shopping cart engine that handles real-time price calculations and item management. By querying the localStorage database, the cart deeply integrates with a complex inventory tracking mechanism, actively monitoring product availability across four distinct states—Available, Low Stock, Out of Stock, and Unavailable—to ensure accurate stock representation and a frictionless shopping journey.</p>
+
+                <h3>Core Features</h3>
+                <ul>
+                    <li><strong>Responsive Frontend:</strong> Built entirely with HTML, CSS, and JavaScript.</li>
+                    <li><strong>Local Mock API:</strong> Utilizes localStorage as a client-side database, bypassing the need for a backend server.</li>
+                    <li><strong>Interactive Galleries:</strong> Features custom image zoom functionality on detailed product pages.</li>
+                    <li><strong>Dynamic Shopping Cart:</strong> Engine that handles real-time price calculations and item management.</li>
+                    <li><strong>Inventory Tracking:</strong> Monitors product availability across four distinct states.</li>
+                </ul>
+            `,
+            fr: `
+                <h3>Description</h3>
+                <p>Cette application e-commerce offre une expérience frontend très réactive et évolutive, entièrement construite avec HTML, CSS et JavaScript. Pour gérer les données sans serveur backend, le projet utilise une API fictive locale alimentée par JavaScript et le localStorage du navigateur. Cette base de données côté client stocke et fournit de manière transparente des informations à la grille de produits intuitive et aux pages de détails des produits, qui sont en outre améliorées par des galeries d'images interactives dotées d'une fonctionnalité de zoom personnalisée.</p>
+                <p>Au cœur de l'application se trouve un moteur de panier d'achat dynamique et robuste qui gère les calculs de prix en temps réel et la gestion des articles. En interrogeant la base de données localStorage, le panier s'intègre profondément à un mécanisme complexe de suivi des stocks, surveillant activement la disponibilité des produits à travers quatre états distincts pour assurer une représentation précise des stocks et un parcours d'achat sans friction.</p>
+
+                <h3>Fonctionnalités Principales</h3>
+                <ul>
+                    <li><strong>Frontend Réactif :</strong> Entièrement construit avec HTML, CSS et JavaScript.</li>
+                    <li><strong>API Locale Fictive :</strong> Utilise localStorage comme base de données côté client, évitant ainsi le besoin d'un serveur backend.</li>
+                    <li><strong>Galeries Interactives :</strong> Fonctionnalité de zoom d'image personnalisée sur les pages détaillées des produits.</li>
+                    <li><strong>Panier Dynamique :</strong> Moteur gérant les calculs de prix en temps réel et la gestion des articles.</li>
+                    <li><strong>Suivi des Stocks :</strong> Surveille la disponibilité des produits à travers quatre états distincts pour assurer une représentation précise.</li>
+                </ul>
+            `
+        },
+        tags: ['HTML', 'CSS', 'JavaScript', 'E-commerce'],
+        github: 'https://github.com/Yassine-Benchekroun/Custom-E-commerce-Storefront-Cart-System',
+        mainImg: 'images/Projects-Screenshot/Custom%20E-commerce%20Storefront%20Cart%20System/responsive-frontend.png',
+        screenshots: [
+            'images/Projects-Screenshot/Custom%20E-commerce%20Storefront%20Cart%20System/interactive-galleries.png',
+            'images/Projects-Screenshot/Custom%20E-commerce%20Storefront%20Cart%20System/inventory-tracking.png',
+            'images/Projects-Screenshot/Custom%20E-commerce%20Storefront%20Cart%20System/mock-api.png',
+            'images/Projects-Screenshot/Custom%20E-commerce%20Storefront%20Cart%20System/shopping-cart.png'
         ]
     }
 };
